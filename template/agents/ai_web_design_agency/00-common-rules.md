@@ -65,3 +65,7 @@ Restituire dati validi e strutturati, senza aggiungere campi inventati quando il
 ```
 
 `confidence` è un numero tra 0 e 1 e non sostituisce le evidenze. Non inventare screenshot, URL, passaggi o risultati. Se un campo non è disponibile, usare `null`, un array vuoto o la convenzione concordata nel progetto.
+
+## Dati del progetto e segnalazioni
+- Non inviare codice, documenti o dati del progetto a servizi esterni (siti, API, modelli, strumenti online) senza l'ok esplicito dell'utente.
+- Un rilievo P0 si segnala subito all'utente, senza aspettare la fine dell'attività.

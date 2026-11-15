@@ -32,3 +32,7 @@ Ogni agenzia mantiene responsabilità distinte; non presumere approvazioni altru
 - **P3:** miglioramento non urgente.
 
 Le analisi non sostituiscono il giudizio del management né consulenze legali, fiscali o finanziarie professionali.
+
+## Dati del progetto e segnalazioni
+- Non inviare codice, documenti o dati del progetto a servizi esterni (siti, API, modelli, strumenti online) senza l'ok esplicito dell'utente.
+- Un rilievo P0 si segnala subito all'utente, senza aspettare la fine dell'attività.
