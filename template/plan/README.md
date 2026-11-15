@@ -8,11 +8,9 @@ Questo piano raccoglie le decisioni prese e le fasi di lavoro, una per file.
 
 - Ogni fase ha un file `NN-nome.md` con obiettivo, stato, agenzie, backlog, criteri di accettazione e, a fine fase, «Fatto», «Verifiche» e «Rilievi aperti» (modello: [00-base.md](00-base.md)).
 - Si lavora su un branch `fase/fN-nome`, partendo da `develop`; le correzioni fuori fase su `fix/nome`.
-- Prima del commit passa `npm run verify`; prima del merge passa anche `npm run verify:e2e` (dalla fase che lo introduce).
-- Commit, merge in `develop` e push avvengono **solo dopo la conferma dell'utente**, come ogni decisione finale delle agenzie (AGENTS.md, «Agenzie»).
-- A fine fase lo stato del file diventa «completata» con l'hash del merge, l'elenco di cosa è stato fatto e dei rilievi rimasti aperti; la riga in «Fasi» si aggiorna.
-- Dopo il merge in `develop` si aggiorna l'indice del codice con `tokensave sync`, poi `/clear`.
 - Le «proposte da confermare» nei file di fase si decidono con l'utente all'apertura di ciascuna.
+- La fase si chiude con la procedura di CONVENTIONS §13.7: piano aggiornato, controlli, **un'unica conferma dell'utente**, poi commit, merge in `develop`, push, `tokensave sync` e `/clear`.
+- Il merge in `main` è un rilascio a parte, solo su richiesta dell'utente (CONVENTIONS §13.8).
 
 ## Decisioni
 

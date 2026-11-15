@@ -124,13 +124,26 @@ La CI esegue gli stessi due script: se uno manca, quel passo della CI si salta.
 ### 13.6 Riferire i risultati
 Si riportano i comandi eseguiti e l'esito reale, e si dice esplicitamente cosa non è stato verificato.
 
-### 13.7 Pubblicazione
-Ogni passo che esce dalla postazione (push, merge in `main`, deploy, migrazioni in produzione) parte solo con l'ok dell'utente.
-1. Si lavora su `fase/fN-nome` o `fix/nome`, partendo da `develop`. Prima del commit `npm run verify`, prima del merge di una fase anche `npm run verify:e2e`.
-2. Merge in `develop` con `--no-ff` («Merge fase/fN-nome in develop»), poi `tokensave sync`.
-3. Push di `develop`: la CI (`.github/workflows/ci.yml`) deve essere verde (`gh run list`, `gh run watch`) prima di andare avanti.
-4. Merge di `develop` in `main` con `--no-ff` («Merge develop in main: FN descrizione breve») e push di `main`.
-5. <!-- Da compilare: hosting, cosa pubblica `main`, passi per le migrazioni, controllo dopo il deploy. -->
+### 13.7 Chiusura di una fase
+Si lavora su `fase/fN-nome` (o `fix/nome` per una correzione fuori fase), partendo da `develop`. Quando i criteri di accettazione sono soddisfatti, la fase si chiude con questi passi, in quest'ordine:
+
+1. **Piano.** Il file della fase passa a «completata» con «Fatto», «Verifiche» e «Rilievi aperti»; si aggiornano la riga in «Fasi» e, se servono, «Decisioni» e «Glossario» di `plan/README.md`.
+2. **Controlli.** `npm run verify` e `npm run verify:e2e` (da quando esiste), con l'esito reale.
+3. **Proposta.** All'utente si presentano il riepilogo (§19) e la sequenza dei passi 4–7, con un'unica domanda di conferma. Senza l'ok non si va avanti; se l'utente chiede modifiche, si riparte dal passo 1.
+4. **Commit** sul branch della fase, con il messaggio che dice cosa cambia.
+5. **Merge** in `develop` con `--no-ff` e messaggio «Merge fase/fN-nome in develop».
+6. **Push** di `develop` e del branch della fase; la CI (`.github/workflows/ci.yml`) deve diventare verde (`gh run list`, `gh run watch`). Se è rossa, la si corregge su un `fix/…` prima di aprire la fase successiva.
+7. **Indice.** `tokensave sync` dalla root.
+8. **Sessione nuova.** Si dice all'utente che lo stato è completo in `plan/` e in git e che può fare `/clear`; la fase successiva riparte leggendo `plan/README.md` e il suo file.
+
+Se un passo fallisce ci si ferma, si riferisce l'errore e non si salta ai passi successivi. Una correzione `fix/…` segue gli stessi passi; il messaggio del merge è «Merge fix/nome in develop».
+
+### 13.8 Rilascio in `main`
+Non fa parte della chiusura di una fase: si fa solo quando l'utente lo chiede, con la CI di `develop` verde.
+1. Merge di `develop` in `main` con `--no-ff` («Merge develop in main: FN descrizione breve») e push di `main`.
+2. <!-- Da compilare: hosting, cosa pubblica `main`, passi per le migrazioni, controllo dopo il deploy. -->
+
+Deploy e migrazioni in produzione partono sempre con un ok esplicito, a parte da quello della fase.
 
 ## 14. Perimetro e difetti esistenti
 

@@ -46,7 +46,7 @@ Poi si apre Claude Code nel progetto e si parte da `plan/00-base.md`.
 
 ## Il metodo in breve
 
-- **Una fase alla volta.** Ogni fase ha un file in `plan/` e un branch `fase/fN-nome` da `develop`; a fine fase si aggiorna il piano, si fa il merge e si riparte con `/clear`.
+- **Una fase alla volta.** Ogni fase ha un file in `plan/` e un branch `fase/fN-nome` da `develop`. Si chiude con la procedura di CONVENTIONS §13.7: piano aggiornato, verify, un'unica conferma, poi commit, merge `--no-ff` in `develop`, push, `tokensave sync` e `/clear`. Il merge in `main` è un rilascio a parte, su richiesta (§13.8).
 - **Agenzie su richiesta.** I ruoli sono un modo di lavorare della sessione principale; i subagent si avviano solo per gli audit o quando l'utente li chiede, e mai tutti insieme.
 - **Conferma dell'utente.** Ogni decisione finale (backlog, architettura, dipendenze, commit, merge, push, deploy) è una proposta finché l'utente non la conferma.
 - **Controlli.** `npm run verify` prima di ogni commit, `npm run verify:e2e` prima del merge di una fase; la CI esegue gli stessi due script.

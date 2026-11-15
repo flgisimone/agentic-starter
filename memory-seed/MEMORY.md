@@ -1,3 +1,3 @@
-- [Clear dopo ogni fase](clear-dopo-ogni-fase.md) — a fine fase stato completo in plan/ e git, poi l'utente fa /clear
+- [Clear dopo ogni fase](clear-dopo-ogni-fase.md) — chiusura con CONVENTIONS §13.7 (una conferma: commit, merge, push, tokensave sync), poi /clear
 - [Agenzie senza subagent](agenzie-regole.md) — ruoli nella sessione principale, conferma dell'utente su ogni decisione finale
 - [Decisioni con la tendina](decisioni-con-tendina.md) — ogni decisione dell'utente via AskUserQuestion, mai elenco nel testo

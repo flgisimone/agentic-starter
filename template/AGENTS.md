@@ -12,7 +12,7 @@ Il progetto è indicizzato con tokensave (cartella `.tokensave/`, ignorata da gi
 - `tokensave_search` per un simbolo per nome, con `literal: true` per il testo esatto;
 - `tokensave_callers`, `tokensave_callees` e `tokensave_impact` per chi usa cosa.
 
-Il server MCP non ha un progetto predefinito: passa `graph_root: "{{PROJECT_PATH}}"`, oppure usa la CLI dalla root (`tokensave tool search <query>`). A fine di ogni fase, dopo il merge in `develop`, aggiorna l'indice con `tokensave sync` dalla root (anche dopo modifiche importanti a metà fase). L'indice si crea in F0 con `tokensave init`, quando c'è il primo codice. Se tokensave non è installato, esplora con ricerca e lettura dei file.
+Il server MCP non ha un progetto predefinito: passa `graph_root: "{{PROJECT_PATH}}"`, oppure usa la CLI dalla root (`tokensave tool search <query>`). A fine di ogni fase l'indice si aggiorna con `tokensave sync` dalla root, come passo della chiusura (CONVENTIONS §13.7); anche dopo modifiche importanti a metà fase. L'indice si crea in F0 con `tokensave init`, quando c'è il primo codice. Se tokensave non è installato, esplora con ricerca e lettura dei file.
 
 ## Scrivere codice: Ponytail
 
@@ -33,7 +33,7 @@ Un bug si corregge alla causa, nel punto per cui passano tutti i chiamanti. Nien
 Il costo di una sessione cresce con le chiamate e con la dimensione del contesto: ogni chiamata lo rilegge tutto. L'abbonamento ha limiti di cinque ore e settimanali.
 
 - **Agenti**: sono la voce più cara. Si avviano solo quando un'attività lo richiede e solo gli specialisti pertinenti, mai tutte le agenzie insieme (sezione «Agenzie»).
-- Una sessione per fase: dopo merge e push se ne apre una nuova (`/clear`). Lo stato è nel piano, in git e nella memoria.
+- Una sessione per fase: dopo la chiusura (CONVENTIONS §13.7) se ne apre una nuova (`/clear`). Lo stato è nel piano, in git e nella memoria.
 - Dentro la fase, `/compact` quando il contesto diventa grande.
 - Durante lo sviluppo test mirati (un file di test, una spec e2e); la verifica completa con `npm run verify`, in un comando solo.
 - Letture indipendenti nella stessa chiamata; righe mirate invece di file interi; non rileggere un file già nel contesto.
@@ -64,7 +64,7 @@ Cinque team di ruoli. I file dei ruoli sono in `agents/` (in ogni cartella `READ
 ### Due regole che valgono sempre
 
 - **Attivazione su richiesta.** Le agenzie non sono un sistema sempre acceso: nessun agente parte senza un'attività che lo richieda, e non si avviano mai tutte le agenzie o tutti gli agenti insieme. Per ogni attività si scelgono l'agenzia e i soli specialisti pertinenti, nel momento in cui servono.
-- **Conferma dell'utente.** Ogni decisione finale delle agenzie è una proposta finché l'utente non la conferma: priorità e contenuto del backlog, requisiti e specifiche, scelte di architettura e di modello dei dati, rilievi accettati o respinti, chiusura di un'attività, dipendenze nuove, commit, merge, push, deploy e migrazioni. Si presentano le alternative con le motivazioni (con AskUserQuestion) e si procede solo dopo il suo ok.
+- **Conferma dell'utente.** Ogni decisione finale delle agenzie è una proposta finché l'utente non la conferma: priorità e contenuto del backlog, requisiti e specifiche, scelte di architettura e di modello dei dati, rilievi accettati o respinti, chiusura di un'attività, dipendenze nuove, commit, merge, push, deploy e migrazioni. Si presentano le alternative con le motivazioni (con AskUserQuestion) e si procede solo dopo il suo ok. A fine fase commit, merge in `develop`, push e `tokensave sync` si confermano con un'unica domanda (CONVENTIONS §13.7).
 
 ### Come si usano
 
