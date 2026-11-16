@@ -1,5 +1,13 @@
 # agentic-starter
 
+> **Archiviato il 2026-11-16.** Lo starter è confluito nel pacchetto [`@agentrica/mcp`](https://github.com/flgisimone/agentrica/tree/main/packages/mcp): un progetto nuovo, con le regole aggiornate e le stesse agenzie, si crea con
+>
+> ```sh
+> npx -y @agentrica/mcp@0.4.0 init mio-progetto --name "Mio progetto"
+> ```
+>
+> Il modello di progetto è in [`starter/`](https://github.com/flgisimone/agentrica/tree/main/starter) del repository di Agentrica. Questo repository resta in sola lettura con la versione del 2026-11-15.
+
 Scaffolding per progetti sviluppati con Claude Code e un sistema di agenzie di ruoli (software, web design, privacy, business, cybersecurity). Contiene solo la governance: regole per gli agenti, convenzioni, piano a fasi, agenzie, audit e CI. Lo stack si sceglie nella fase F0 di ogni progetto.
 
 Documenti e ruoli sono in italiano.
